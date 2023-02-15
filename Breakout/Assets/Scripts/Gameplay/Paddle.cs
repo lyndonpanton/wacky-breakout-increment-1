@@ -45,7 +45,10 @@ public class Paddle : MonoBehaviour
         if (horizontalInput != 0)
         {
             float newXPosition = CalculateClampedX(
-                horizontalInput * ConfigurationUtils.PaddleMoveUnitsPerSecond * Time.fixedDeltaTime + transform.position.x
+                rb2d.position.x
+                + horizontalInput
+                * ConfigurationUtils.PaddleMoveUnitsPerSecond
+                * Time.fixedDeltaTime
             );
 
             rb2d.MovePosition(
@@ -67,7 +70,7 @@ public class Paddle : MonoBehaviour
 
         //return newXPosition;
 
-        if ((newXPosition - halfBC2DWidth) <= ScreenUtils.ScreenLeft)
+        if ((newXPosition - halfBC2DWidth) < ScreenUtils.ScreenLeft)
         {
             newXPosition = ScreenUtils.ScreenLeft + 10 * halfBC2DWidth;
         } else if ((newXPosition + halfBC2DWidth) >= ScreenUtils.ScreenRight)
