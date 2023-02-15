@@ -18,7 +18,11 @@ public class Paddle : MonoBehaviour
     /// Half the width of the game object's box collider 2d
     /// </summary>
     float halfBC2DWidth;
-    
+
+    /// <summary>
+    /// 
+    /// </summary>
+    const float BounceAngleHalfRange = 60 * Mathf.Deg2Rad;
 
     // Start is called before the first frame update
     void Start()
@@ -72,5 +76,28 @@ public class Paddle : MonoBehaviour
         }
 
         return newXPosition;
+    }
+    
+    /// <summary>
+    /// Detects collision with a ball to aim the ball
+    /// </summary>
+    /// <param name="collision">Collision information</param>
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            // calculate new ball direction
+            float ballOffsetFromPaddleCenter = transform.position.x -
+                collision.transform.position.x;
+            float normalizedBallOffset = ballOffsetFromPaddleCenter /
+                halfBC2DWidth;
+            float angleOffset = normalizedBallOffset * BounceAngleHalfRange;
+            float angle = Mathf.PI / 2 + angleOffset;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+            // tell ball to set direction to new direction
+            Ball ballScript = collision.gameObject.GetComponent<Ball>();
+            ballScript.SetDirection(direction);
+        }
     }
 }

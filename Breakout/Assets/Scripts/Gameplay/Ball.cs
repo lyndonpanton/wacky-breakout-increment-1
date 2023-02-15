@@ -35,4 +35,12 @@ public class Ball : MonoBehaviour
     {
         
     }
+
+    public void SetDirection(Vector2 direction)
+    {
+        rb2d.AddForce(
+            direction * ConfigurationUtils.BallImpulseForce,
+            ForceMode2D.Force
+        );
+    }
 }
