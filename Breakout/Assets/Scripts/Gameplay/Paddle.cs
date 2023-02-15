@@ -109,7 +109,7 @@ public class Paddle : MonoBehaviour
         ContactPoint2D[] contactPoints = new ContactPoint2D[2];
         collision.GetContacts(contactPoints);
 
-        if (Vector2.Distance(contactPoints[0].point, contactPoints[1].point) < 0.05f)
+        if (Mathf.Abs(contactPoints[0].point.y - contactPoints[1].point.y) < 0.05f)
         {
             return true;
         }
