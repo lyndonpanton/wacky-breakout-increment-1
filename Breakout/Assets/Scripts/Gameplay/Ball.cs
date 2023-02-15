@@ -38,9 +38,7 @@ public class Ball : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
-        rb2d.AddForce(
-            direction * ConfigurationUtils.BallImpulseForce,
-            ForceMode2D.Force
-        );
+        float magnitude = rb2d.velocity.magnitude;
+        rb2d.velocity = direction * magnitude;
     }
 }
