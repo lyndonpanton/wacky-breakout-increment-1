@@ -50,7 +50,7 @@ n/a
 
 ### Installing
 
-* Download link: [Github Repository]https://github.com/lyndonpanton/wacky-breakout-increment-1)
+* Download link: [Github Repository](https://github.com/lyndonpanton/wacky-breakout-increment-1)
 
 ### Executing program
 
