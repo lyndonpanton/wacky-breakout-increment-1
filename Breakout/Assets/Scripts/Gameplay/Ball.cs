@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float startingAngle = 20 * Mathf.Deg2Rad;
+        float startingAngle = 270 * Mathf.Deg2Rad;
 
         float x = Mathf.Cos(startingAngle) * ConfigurationUtils.BallImpulseForce;
         float y = Mathf.Sin(startingAngle) * ConfigurationUtils.BallImpulseForce;
