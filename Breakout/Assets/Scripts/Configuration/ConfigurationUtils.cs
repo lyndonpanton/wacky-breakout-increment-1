@@ -18,8 +18,19 @@ public static class ConfigurationUtils
         get { return 10; }
     }
 
+    /// <summary>
+    /// Gets the ball force
+    /// </summary>
+    public static float BallImpulseForce
+    {
+        get
+        {
+            return 200;
+        }
+    }
+
     #endregion
-    
+
     /// <summary>
     /// Initializes the configuration utils
     /// </summary>
