@@ -84,7 +84,7 @@ public class Paddle : MonoBehaviour
     /// <param name="collision">Collision information</param>
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") && isTopCollision(collision))
         {
             // calculate new ball direction
             float ballOffsetFromPaddleCenter = transform.position.x -
@@ -99,5 +99,18 @@ public class Paddle : MonoBehaviour
             Ball ballScript = collision.gameObject.GetComponent<Ball>();
             ballScript.SetDirection(direction);
         }
+    }
+
+    bool isTopCollision(Collision2D collision)
+    {
+        ContactPoint2D[] contactPoints = new ContactPoint2D[2];
+        collision.GetContacts(contactPoints);
+
+        if (Vector2.Distance(contactPoints[0].point, contactPoints[1].point) < 0.05f)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
